@@ -1,0 +1,23 @@
+{
+    "name": "crazy252/typo3_vite",
+    "type": "typo3-cms-extension",
+    "description": "Vite for Typo3",
+    "license": "GPL-2.0-or-later",
+    "version": "1.0",
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "replace": {
+        "typo3-ter/typo3_vite": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crazy252\\Typo3Vite\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "typo3_vite"
+        }
+    }
+}
