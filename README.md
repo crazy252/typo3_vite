@@ -3,10 +3,10 @@ Typo3 + Vite.js
 
 This extension adds vite.js to your typo3 project!
 
-Setup
+## Setup
 -----
 
-Add a `package.json` file to your extension or add the following dependencies to your file
+Add a `package.json` file to your extension or add the following dependencies to your file.
 
 ```json
 {
@@ -21,13 +21,12 @@ Add a `package.json` file to your extension or add the following dependencies to
     "dependencies": {
         "@fullhuman/postcss-purgecss": "^4.1.3",
         "sass": "^1.54.4",
-        "vite": "^3.0.7",
-        "vite-plugin-pwa": "^0.12.3"
+        "vite": "^3.0.7"
     }
 }
 ```
 
-Add a `postcss.config.js` file to your extension
+Add a `postcss.config.js` file to your extension.
 
 ```js
 const path = require('path');
@@ -96,32 +95,6 @@ const config = {
         ]
     },
     plugins: [
-        VitePWA({
-            strategies: 'injectManifest',
-            srcDir: 'Resources/Private/Frontend/',
-            filename: 'sw.js',
-            includeAssets: ['/favicon.ico', '/robots.txt', '/images/apple-touch-icon.png'],
-            manifest: {
-                name: 'Hombre',
-                short_name: 'Hombre',
-                icons: [
-                    {
-                        src: '/images/android-chrome-192x192.png',
-                        sizes: '192x192',
-                        type: 'image/png'
-                    },
-                    {
-                        src: '/images/android-chrome-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png'
-                    }
-                ],
-                theme_color: '#ffffff',
-                background_color: '#ffffff',
-                display: 'standalone',
-                orientation: 'portrait'
-            }
-        }),
         {
             name: 'html',
             handleHotUpdate({file, server}) {
@@ -159,8 +132,29 @@ Add the viewhelpers in your page template to use your bundled files. The entry i
 {namespace vite=Crazy252\Typo3Vite\ViewHelpers}
 
 <vite:asset extension="extension_name" entry="main.js" />
+```
+
+And now it's done. Start the dev server in your extension folder via `yarn dev` or other javascript package managers.
+
+After that, you can view your site with the `?no_cache=1` and you got the full power of vite.js in typo3!
+
+## React setup
+
+If you want to use react in your frontend, you need to add the following viewhelper in your page template.
+
+```xml
+<vite:react extension="extension_name" />
+```
+
+## PWA setup
+
+If you want to add pwa support to your site via vite.js, you can add the `vite-plugin-pwa` and the viewhelper in your page template.
+
+```xml
 <vite:webManifest extension="extension_name" />
 ```
+
+## DDEV setup
 
 If you use ddev as environment, you need to extension ddev with your port. Create a file in the `.ddev` folder named `docker-compose.ports.yaml` and add the following content.
 
@@ -172,7 +166,3 @@ services:
     ports:
       - "127.0.0.1:5173:5173"
 ```
-
-And now it's done. Start the dev server in your extension folder via `yarn dev` or other javascript package managers.
-
-After that, you can view your site with the `?no_cache=1` and you got the full power of vite.js in typo3!
