@@ -156,7 +156,7 @@ If you want to add pwa support to your site via vite.js, you can add the `vite-p
 
 ## DDEV setup
 
-If you use ddev as environment, you need to extension ddev with your port. Create a file in the `.ddev` folder named `docker-compose.ports.yaml` and add the following content.
+If you use ddev as environment, you need to extend ddev with a port for the vite dev server. Create a file in the `.ddev` folder named `docker-compose.ports.yaml` and add the following content.
 
 ```yaml
 version: '3.6'
