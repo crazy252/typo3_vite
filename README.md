@@ -1,7 +1,7 @@
 Typo3 + Vite.js
 ====
 
-This extension adds vite.js to your typo3 project!
+This extension adds Vite.js to your Typo3 project!
 
 ## Setup
 -----
@@ -18,42 +18,10 @@ Add a `package.json` file to your extension or add the following dependencies to
         "build": "vite build",
         "preview": "vite preview"
     },
-    "dependencies": {
-        "@fullhuman/postcss-purgecss": "^4.1.3",
-        "sass": "^1.54.4",
-        "vite": "^3.0.7"
+    "devDependencies": {
+        "vite": "^4.1.0"
     }
 }
-```
-
-Add a `postcss.config.js` file to your extension.
-
-```js
-const path = require('path');
-const postCssPurge = require('@fullhuman/postcss-purgecss');
-
-const plugins = [];
-
-if (process.env.NODE_ENV === 'production') {
-    plugins.push(
-        postCssPurge({
-            safelist: [],
-            contentFunction: () => {
-                let extPath = path.resolve(__dirname + '/Resources/Private')
-
-                return [
-                    extPath + '/**/*.html',
-                    extPath + '/**/*.js',
-                ]
-            },
-            defaultExtractor(content) {
-                return content.match(/[\w-/:]+(?<!:)/g) || []
-            }
-        })
-    );
-}
-
-module.exports = {plugins: plugins};
 ```
 
 Add a `vite.config.js` file to your extension. If you don't use ddev as environment you can remove the `https` object in the config.
@@ -64,7 +32,6 @@ You are free to change the input and output paths and the alias. If you change t
 import fs from 'fs'
 import path from 'path'
 import { defineConfig } from 'vite'
-import { VitePWA } from 'vite-plugin-pwa'
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -117,12 +84,10 @@ Extend your TypoScript with your configuration. You can use the template setup i
 The port need to be the same as in the `vite.config.js`.
 
 ```txt
-plugin.tx_typo3vite.settings {
-    extension_name {
-        port = 5173
-        out = Resources/Public
-        src = Resources/Private/Frontend
-    }
+plugin.tx_typo3vite.settings.extension_name {
+    port = 5173
+    out = Resources/Public
+    src = Resources/Private/Frontend
 }
 ```
 
