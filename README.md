@@ -4,7 +4,6 @@ Typo3 + Vite.js
 This open source project provides a bridge between Vite.js and Typo3 to make development and deployment of modern web applications easier and more efficient. It allows Typo3 users to leverage the power of Vite.js's fast and modular development experience in their projects. It offers an easy-to-use interface for integrating Vite.js into Typo3 and enables developers to take full advantage of Vite.js's modern features, such as hot module replacement, tree-shaking, and code splitting. It's a perfect way to give your Typo3 project the modern web development experience it deserves!
 
 ## Setup
------
 
 Add a `package.json` file to your extension or add the following dependencies to your file.
 
