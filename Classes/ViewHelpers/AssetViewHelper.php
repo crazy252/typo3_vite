@@ -74,7 +74,7 @@ class AssetViewHelper extends AbstractViewHelper
             $files = Utility::viteManifestFile($extension, $extensionPath, $outPath, $srcPath, $entry);
             foreach ($files as $file) {
                 if (preg_match('/\.js$/', $file)) {
-                    $pageRenderer->addJsFile($file);
+                    $pageRenderer->addJsFooterFile($file);
                 }
                 if (preg_match('/\.css$/', $file)) {
                     $pageRenderer->addCssFile($file);

@@ -5,7 +5,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3_MODE') || die('Access denied.');
 
 ExtensionManagementUtility::addStaticFile(
-    'hombre_website',
+    'typo3_vite',
     'Configuration/TypoScript',
-    'Hombre Website'
+    'TYPO3 Vite'
 );
