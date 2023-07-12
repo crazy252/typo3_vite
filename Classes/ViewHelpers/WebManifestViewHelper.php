@@ -12,6 +12,9 @@ use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
+/**
+ * @deprecated Will be removed in the next version
+ */
 class WebManifestViewHelper extends AbstractViewHelper
 {
     public function initializeArguments()

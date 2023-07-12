@@ -110,14 +110,6 @@ If you want to use react in your frontend, you need to add the following viewhel
 <vite:react extension="extension_name" />
 ```
 
-## PWA setup
-
-If you want to add pwa support to your site via vite.js, you can add the `vite-plugin-pwa` and the viewhelper in your page template.
-
-```xml
-<vite:webManifest extension="extension_name" />
-```
-
 ## DDEV setup
 
 If you use ddev as environment, you need to extend ddev with a port for the vite dev server. Create a file in the `.ddev` folder named `docker-compose.ports.yaml` and add the following content.
