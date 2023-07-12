@@ -110,6 +110,23 @@ If you want to use react in your frontend, you need to add the following viewhel
 <vite:react extension="extension_name" />
 ```
 
+## Extension setup
+
+If you want to change the domain, url, timeout and other settings you can change it via the typoscript setup. Here are the possible settings with the default values.
+
+```txt
+plugin.tx_typo3vite.settings.extension_name {
+    out = null                    # path to the output folder
+    src = null                    # path to the src folder
+
+    domain = https://127.0.0.1    # default domain of vite server
+    port = 3000                   # default port of vite server
+    uri = /@vite/client           # default uri for vite client
+    timeout = 1.0                 # timeout for dev server check
+    verify = false                # ssl certificate verification
+}
+```
+
 ## DDEV setup
 
 If you use ddev as environment, you need to extend ddev with a port for the vite dev server. Create a file in the `.ddev` folder named `docker-compose.ports.yaml` and add the following content.

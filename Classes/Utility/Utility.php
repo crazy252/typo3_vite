@@ -27,6 +27,11 @@ class Utility
         return preg_replace('/\/?(\'|")\/?/m', '', $matches[0][1]);
     }
 
+    public static function viteManifestExists(string $extensionPath, string $outPath): bool
+    {
+        return file_exists($extensionPath . $outPath . '/manifest.json');
+    }
+
     /**
      * @param string $extension
      * @param string $extensionPath
@@ -37,11 +42,11 @@ class Utility
      */
     public static function viteManifestFile(string $extension, string $extensionPath, string $outPath, string $srcPath, string $entry): array
     {
-        $manifestPath = $extensionPath . $outPath . '/manifest.json';
-        if (!file_exists($manifestPath)) {
+        if (!self::viteManifestExists($extensionPath, $outPath)) {
             return [];
         }
 
+        $manifestPath = $extensionPath . $outPath . '/manifest.json';
         $outputDir = 'EXT:' . $extension . '/' . $outPath . '/';
 
         $assets = [];
@@ -83,10 +88,19 @@ class Utility
     public static function viteDevServerRunning(array $settings): bool
     {
         $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
+        
+        $domain = $settings['domain'] ?? 'https://127.0.0.1';
         $port = $settings['port'] ?? 3000;
+        $uri = $settings['uri'] ?? '/@vite/client';
+
+        $timeout = $settings['timeout'] ?? 1.0;
+        $verify = $settings['verify'] ?? false;
 
         try {
-            $requestFactory->request('https://127.0.0.1:' . $port . '/@vite/client');
+            $requestFactory->request($domain . ':' . $port . $uri, 'GET', [
+                'timeout' => $timeout,
+                'verify' => $verify,
+            ]);
         } catch (Exception $e) {
             return false;
         }
