@@ -18,7 +18,7 @@ Add a `package.json` file to your extension or add the following dependencies to
         "preview": "vite preview"
     },
     "devDependencies": {
-        "vite": "^4.1.0"
+        "vite": "^4.4.11"
     }
 }
 ```
