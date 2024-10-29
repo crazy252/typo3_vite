@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "version": "1.1.6",
     "require": {
-        "typo3/cms-core": "^10 || ^11 || ^12"
+        "typo3/cms-core": "^10 || ^11 || ^12 || ^13"
     },
     "replace": {
         "typo3-ter/typo3_vite": "self.version"
